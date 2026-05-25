@@ -10,13 +10,13 @@ import matplotlib.pyplot as plt
 from chain import OscillatorChain
 
 
-L, gamma, varepsilon, T_slow = 11, 0.05, 0.2, 200.0
+L, gamma, varepsilon, T_slow = 31, 0, 0.1, 20.0
 
 
 # ── Начальное условие ─────────────────────────────────────────────────────
 j  = np.arange(L)
-q0 = 0.5 * np.cos(2.0 * np.pi * j / L)   # чистая мода k=1
-p0 = np.zeros(L)
+q0 = np.ones_like(j)   # чистая мода k=1
+p0 = np.ones_like(j) + j
 
 # ── Симуляция ─────────────────────────────────────────────────────────────
 chain = OscillatorChain(L=L, gamma=gamma, varepsilon=varepsilon,
@@ -31,11 +31,11 @@ os.makedirs(out, exist_ok=True)
 
 plots = {
     "hamiltonian":     chain.plot_hamiltonian(),
-    "mode_energies":   chain.plot_mode_energies(modes=[1, 6]),
-    "particle_energy": chain.plot_particle_energy(i=L // 2),
-    "phase_portrait":  chain.plot_phase_portrait(i=L // 2),
-    "summary":         chain.plot_summary(particle_i=L//2,
-                                          modes=list(range(7))),
+    "mode_energies":   chain.plot_mode_energies(modes=[1, ]),
+    "particle_energy": chain.plot_particle_energy(i=1),
+    "phase_portrait":  chain.plot_phase_portrait(i=1),
+    "summary":         chain.plot_summary(particle_i=100,
+                                          modes=[1, 300]),
 }
 
 for name, fig in plots.items():

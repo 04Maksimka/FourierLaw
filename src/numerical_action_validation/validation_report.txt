@@ -1,0 +1,18 @@
+Validation report
+=================
+L = 7
+rho = 6.0
+T = 20.0
+dt = 0.001
+selected mode k = 0, sigma = 1
+
+Mean validation at final stored ensemble time:
+  |mean_from_a - theory|      = 5.201647e-03
+  |mean_direct_action - theory| = 9.158734e-03
+
+Ito residual convergence:
+  dt          RMS_final       RMS_path
+  0.004      6.506858e-01    2.987372e-01   
+  0.002      3.457742e-01    1.168912e-01   
+  0.001      2.686329e-01    1.265459e-01   
+  0.0005     9.152626e-02    5.222300e-02   
